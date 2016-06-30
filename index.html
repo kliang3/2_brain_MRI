@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta charset="utf-8">
+        <title>MRI</title>
+        <meta name="description" content="Aframe">
+        <script src="https://aframe.io/releases/0.2.0/aframe.js"></script>
+       
+        <script src="aframe-keyboard-controls.js"></script>
+        <script src="aframe-proxy-controls.js"></script>
+        <script src="aframe-gltf.min.js"></script>
+        <script src="line-drawer.js"></script>
+        <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v1.14.0/dist/aframe-extras.min.js"></script>
+      
+      
+        <script src="aframe-extra.js"></script>
+    </head>
+    <body >
+        <a-scene physics vr-mode-ui="enabled: false">
+        
+        <a-sky id="backgroundCol" color="black"></a-sky>
+        
+
+        <a-entity rotation="-90 0 0" >
+        <a-entity id="camera" camera look-controls keyboard-controls="cameraUse: true" position="0 5 3" >
+              <a-cursor color="#2E3A87"></a-cursor>
+        </a-entity>      </a-entity> 
+         
+          
+    
+    <a-assets>
+ 
+         <a-asset-item id="fibers" src="models/fibers.ply"></a-asset-item>   
+         <a-asset-item id="fibers_L" src="models/fibers_L.ply"></a-asset-item>   
+         <img id="axial" src="axial.png"> 
+         <img id="axial-1" src="Axial-1.png"> 
+         <img id="axial-2" src="Axial-2.png"> 
+         <img id="axial-3" src="Axial-3.png"> 
+         <img id="axial-4" src="Axial-4.png"> 
+         <img id="axial1"  src="Axial1.png"> 
+         <img id="axial2"  src="Axial2.png"> 
+         <img id="axial3"  src="Axial3.png"> 
+         <img id="axial4"  src="Axial4.png"> 
+    </a-assets> 
+
+    
+       <a-image id="Axial" src="#axial" visible="true" rotation="90 0 0" scale="20 12 20" position="0 -2.25 1.5"></a-image>
+
+       <a-image id="Axial-1" src="#axial-1" visible="false" rotation="90 0 0" scale="20 12 20" position="0 -2.30 1.5"></a-image>
+
+       <a-image id="Axial-2" src="#axial-2" visible="false" rotation="90 0 0" scale="20 12 20" position="0 -2.35 1.5"></a-image>
+
+       <a-image id="Axial-3" src="#axial-3" visible="false" rotation="90 0 0" scale="20 12 20" position="0 -2.40 1.5"></a-image>
+
+       <a-image id="Axial-4" src="#axial-4" visible="false" rotation="90 0 0" scale="20 12 20" position="0 -2.45 1.5"></a-image>
+
+       <a-image id="Axial1" src="#axial1" visible="false" rotation="90 0 0" scale="20 12 20" position="0 -2.20 1.5"></a-image>
+
+       <a-image id="Axial2" src="#axial2" visible="false" rotation="90 0 0" scale="20 12 20" position="0 -2.15 1.5"></a-image>
+
+       <a-image id="Axial3" src="#axial3" visible="false" rotation="90 0 0" scale="20 12 20" position="0 -2.10 1.5"></a-image>
+
+       <a-image id="Axial4" src="#axial4" visible="false" rotation="90 0 0" scale="20 12 20" position="0 -2.05 1.5"></a-image>
+
+
+
+      <a-entity id="fibers2"   keyboard-controls="cameraUse: false">
+       
+       <a-entity ply-model="src: #fibers;" position="-0.25 0 0" ></a-entity>
+       <a-entity ply-model="src: #fibers_L;" rotation="0 5 0" position="0 0 -.4"></a-entity>
+
+      </a-entity>
+     
+           <a-entity text="text: Superior ; size: 0.6;" rotation="-90 0 0" position="5.5 0 -1.7" material="color:white">
+          </a-entity>
+
+           <a-entity text="text: Inferior ; size: 0.6;" rotation="-90 0 0" position="5.5 0 .3" material="color:white">
+          </a-entity>
+
+        <a-entity id="up" geometry="primitive: sphere; radius: 0.3" material="color: green; opacity: 0.5;" position="5 0 -2" ></a-entity>
+        <a-entity id="up2" visible="false" geometry="primitive: sphere; radius: 0.3" material="color: red; opacity: 0.5;" position="5 0 -2" ></a-entity>
+
+        <a-entity id="down" geometry="primitive: sphere; radius: 0.3" material="color: green; opacity: 0.5;" position="5 0 0" ></a-entity>
+        <a-entity id="down2" visible="false" geometry="primitive: sphere; radius: 0.3" material="color: red; opacity: 0.5;" position="5 0 0" ></a-entity>
+        
+    </a-scene>
+    
+   
+
+        <script>
+        var x=0; 
+        console.log(x);
+
+
+        function reset(){ 
+          document.querySelector("#Axial").setAttribute('visible','false');
+          document.querySelector("#Axial1").setAttribute('visible','false');
+          document.querySelector("#Axial2").setAttribute('visible','false');
+          document.querySelector("#Axial3").setAttribute('visible','false');
+          document.querySelector("#Axial4").setAttribute('visible','false');
+          document.querySelector("#Axial-1").setAttribute('visible','false');
+          document.querySelector("#Axial-2").setAttribute('visible','false');
+          document.querySelector("#Axial-3").setAttribute('visible','false');
+          document.querySelector("#Axial-4").setAttribute('visible','false');
+
+        }
+
+        function run(){
+        if (x==0){
+            reset(); 
+            document.querySelector("#Axial").setAttribute('visible','true');
+        }
+        if (x==1){
+            reset(); 
+            document.querySelector("#Axial1").setAttribute('visible','true');
+        }
+        if (x==2){
+            reset(); 
+            document.querySelector("#Axial2").setAttribute('visible','true');
+        }
+        if (x==3){
+            reset(); 
+            document.querySelector("#Axial3").setAttribute('visible','true');
+            document.querySelector("#up").setAttribute('visible','true');
+            document.querySelector("#up2").setAttribute('visible','false');
+        }
+        if (x==4){
+            reset(); 
+            document.querySelector("#Axial4").setAttribute('visible','true');
+            document.querySelector("#up2").setAttribute('visible','true');
+            document.querySelector("#up").setAttribute('visible','false');
+        }
+        if (x==-1){
+            reset(); 
+            document.querySelector("#Axial-1").setAttribute('visible','true');
+        }
+        if (x==-2){
+            reset(); 
+            document.querySelector("#Axial-2").setAttribute('visible','true');
+        }
+        if (x==-3){
+            reset(); 
+            document.querySelector("#Axial-3").setAttribute('visible','true');
+            document.querySelector("#down").setAttribute('visible','true');
+            document.querySelector("#down2").setAttribute('visible','false');
+        }
+        if (x==-4){
+            reset(); 
+            document.querySelector("#Axial-4").setAttribute('visible','true');
+            document.querySelector("#down2").setAttribute('visible','true');
+            document.querySelector("#down").setAttribute('visible','false');
+        }
+      }
+      
+
+        document.querySelector("#up").addEventListener("click", function(){ 
+            if(x<4){
+            x+=1;
+            console.log(x);
+            run();
+          }
+
+        });
+
+        document.querySelector("#down").addEventListener("click", function(){ 
+            if(x>-4){
+            x-=1;
+            console.log(x);
+            run();
+            }
+
+        });
+
+
+         
+        
+    
+        </script>
+
+  </body>
+</html>
